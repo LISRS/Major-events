@@ -25,21 +25,19 @@ $(function () {
 function getUserInfo() {
 
     $.ajax({
-        type: "GET",
+        method: "GET",
         url: "/my/userinfo",
-
-        success: (res) => {
-            console.log(res);
+        success: function (res) {
             if (res.status !== 0) return layer.msg("获取用户信息失败！");
-            layer.msg("获取用户信息成功！");
+            
             rederAvatar(res.data)
         },
-            // complete: function (res) {
-            //     if (res.responseJSON.status = 1 && res.responseJSON.message === '身份认证失败！') {
-            //         localStorage.removeItem('token')
-            //         location.href = 'login.html'
-            //     }
-            // }
+        complete: function (res) {
+            if (res.responseJSON.status = 1 && res.responseJSON.message === '身份认证失败！') {
+                localStorage.removeItem('token')
+                location.href = 'login.html'
+            }
+        }
     });
 }
 // 渲染用户头像
