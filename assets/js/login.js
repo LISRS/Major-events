@@ -1,5 +1,4 @@
 $(function () {
-    console.log(123);
     // 点击按钮跳转
     $('#linkreg').click(function () {
         $('.reg-box').show();
@@ -43,20 +42,25 @@ $(function () {
         })
 
     })
+    var sum=null
     $('#name-box').on('submit', function (e) {
         e.preventDefault();
-
         data = {
             username: $('.ist').val(),
             password: $('.istt').val(),
         }
         $.post('http://www.liulongbin.top:3007/api/login', data, function (res) {
-            console.log(res);
             if (res.status != 0) {
                 return layer.msg('用户名或密码错误')
             }
-            
-            location.href='index.html';
+            localStorage.setItem('token', res.token)
+            location.href = 'index.html';
+
+           
         })
+
     })
+
+
+
 })
