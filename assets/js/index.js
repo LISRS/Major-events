@@ -48,8 +48,10 @@ function rederAvatar(user) {
     if (user.user_pic != null) {
         $('.layui-nav-img').attr('src', user.user_pic).show()
         $('.text-avatar').hide()
+        $('.layui-nav-img').show()
     } else {
         var first = name[0].toUpperCase()
         $('.text-avatar').html(first).show()
+        console.log($('.layui-nav-img').hide());
     }
 }
