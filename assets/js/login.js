@@ -42,7 +42,6 @@ $(function () {
         })
 
     })
-    var sum=null
     $('#name-box').on('submit', function (e) {
         e.preventDefault();
         data = {

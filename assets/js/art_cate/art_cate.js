@@ -10,7 +10,9 @@ $(function () {
             method: 'GET',
             url: '/my/article/cates',
             success: function (res) {
+
                 var htmlStr = template('tpl-table', res)
+                console.log(htmlStr);
                 $('tbody').html(htmlStr)
             }
         })
@@ -35,6 +37,7 @@ $(function () {
             url: '/my/article/addcates',
             data: $(this).serialize(),
             success: function (res) {
+                console.log(res);
                 if (res.status !== 0) {
                     return layer.msg('新增分类失败！')
                 }
