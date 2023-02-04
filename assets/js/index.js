@@ -40,6 +40,6 @@ function rederAvatar(user) {
     } else {
         var first = name[0].toUpperCase()
         $('.text-avatar').html(first).show()
-        console.log($('.layui-nav-img').hide());
+        $('.layui-nav-img').hide()
     }
 }

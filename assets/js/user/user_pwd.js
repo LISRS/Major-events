@@ -6,7 +6,6 @@ $(function () {
             , '密码必须6到12位，且不能出现空格'
         ],
         samePwd: function (value) {
-            console.log(value);
             if (value === $('[name=oldPwd]').val()) {
                 return '新旧密码不能相同'
 

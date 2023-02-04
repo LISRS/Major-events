@@ -8,3 +8,55 @@ body {
     padding: 15px;
     background-color: #f2f3f5;
 }
+
+.layui-layer-page {
+    width: 100% !important;
+}
+
+#layui-layer6{
+    /* display: ; */
+    width: 100% !important;
+    height: 100% !important;
+    position: static;
+    background: #f2f3f5;
+}
+
+.layui-layer-content {
+    padding: 10px 15px !important;
+
+}
+
+[name='cate_id'] {
+    width: 100%;
+    height: 38px;
+    line-height: 1.3;
+}
+
+/* 封面容器的样式 */
+.cover-box {
+    display: flex;
+}
+
+/* 左侧裁剪区域的样式 */
+.cover-left {
+    width: 400px;
+    height: 280px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+/* 右侧盒子的样式 */
+.cover-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 预览区域的样式 */
+.img-preview {
+    width: 200px;
+    height: 140px;
+    background-color: #ccc;
+    margin-bottom: 20px;
+    overflow: hidden;
+}

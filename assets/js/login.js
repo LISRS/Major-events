@@ -34,7 +34,7 @@ $(function () {
             password: $('.reg-pwd').val(),
         }
         $.post('http://www.liulongbin.top:3007/api/reguser', data, function (res) {
-            console.log(res);
+            // console.log(res);
             if (res.status != 0) return layer.msg(res.message)
             layer.msg('注册成功 请登录');
             $('#linklogin').click()

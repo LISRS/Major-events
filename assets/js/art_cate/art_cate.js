@@ -1,5 +1,5 @@
 $(function () {
-    var layer = layui.layer
+
     var form = layui.form
 
     initArtCateList()
@@ -12,7 +12,6 @@ $(function () {
             success: function (res) {
 
                 var htmlStr = template('tpl-table', res)
-                console.log(htmlStr);
                 $('tbody').html(htmlStr)
             }
         })
@@ -37,7 +36,7 @@ $(function () {
             url: '/my/article/addcates',
             data: $(this).serialize(),
             success: function (res) {
-                console.log(res);
+                // console.log(res);
                 if (res.status !== 0) {
                     return layer.msg('新增分类失败！')
                 }
@@ -48,10 +47,12 @@ $(function () {
             }
         })
     })
-
     // 通过代理的形式，为 btn-edit 按钮绑定点击事件
     var indexEdit = null
     $('tbody').on('click', '.btn-edit', function () {
+
+        var id = $(this).attr('data-id')
+        getid(id)
         // 弹出一个修改文章分类信息的层
         indexEdit = layer.open({
             type: 1,
@@ -59,8 +60,6 @@ $(function () {
             title: '修改文章分类',
             content: $('#dialog-edit').html()
         })
-
-        var id = $(this).attr('data-id')
         // 发起请求获取对应分类的数据
         $.ajax({
             method: 'GET',
@@ -69,8 +68,27 @@ $(function () {
                 form.val('form-edit', res.data)
             }
         })
+
+
     })
 
+    function getid(id) {
+        $('body').on('click', '#strs', function (e) {
+            e.preventDefault();
+            getinits(id)
+            // 请求Ajax数据
+        })
+        function getinits(id) {
+            $.ajax({
+                method: 'GET',
+                url: '/my/article/cates/' + id,
+                data: id,
+                success: function (res) {
+                    form.val('form-edit', res.data)
+                }
+            })
+        }
+    }
     // 通过代理的形式，为修改分类的表单绑定 submit 事件
     $('body').on('submit', '#form-edit', function (e) {
         e.preventDefault()
